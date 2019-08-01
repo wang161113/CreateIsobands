@@ -1,6 +1,5 @@
 # CreateIsobands
-## 此项目用于通过高程点数据生成等高线图片：图片的生成使用了OpenCV库。
-
+此项目用于通过高程点数据生成等高线图片，图片的生成使用了OpenCV
 License Agreement
 For Open Source Computer Vision Library
 (3-clause BSD License)

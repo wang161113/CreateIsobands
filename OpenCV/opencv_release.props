@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <OpenCVLibDir>$(MSBuildThisFileDirectory)lib\$(platform)\</OpenCVLibDir>
+    <OpencvBinDir>$(MSBuildThisFileDirectory)bin\$(platform)\$(Configuration)\</OpencvBinDir>
+    <OpencvIncDir>$(MSBuildThisFileDirectory)include\opencv2;$(MSBuildThisFileDirectory)include\opencv;$(MSBuildThisFileDirectory)include</OpencvIncDir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IncludePath>$(OpencvIncDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(OpenCVLibDir);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>opencv_world341.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /S /Y "$(OpencvBinDir)*" "$(OutDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="OpenCVLibDir">
+      <Value>$(OpenCVLibDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OpencvBinDir">
+      <Value>$(OpencvBinDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OpencvIncDir">
+      <Value>$(OpencvIncDir)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
